@@ -1,7 +1,8 @@
 from info import *
+import random
 import os
 
-
+dump_methods = [dump_crave.sh, dump_gh_actions]
 botid = 7004812988
 request_id = -1001263694109
 
@@ -17,7 +18,8 @@ def command(m):
 def request(m):
     try:
         URL = m.text.split()[1]
-        result = os.system(f'bash dump.sh {URL}')
+        dump_method = random(dump_methods)
+        result = os.system(f'bash {dump_method} {URL}')
         if result == 0:
             bot.reply_to(m, "Succesfully requested the dump!")
         else:
