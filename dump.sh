@@ -8,18 +8,18 @@ then
 fi
 
 # Define the Personal Access Token (PAT)
-PAT="replace with pat"
+#PAT="replace with pat"
 
 # Setup gh with the PAT
-gh auth login --with-token $PAT
+#gh auth login --with-token $PAT
 
 # Set the repository
-git clone https://github.com/sounddrill31/AndroidDumpsCI.git
-cd AndroidDumpsCI
-gh repo set-default https://github.com/sounddrill31/AndroidDumpsCI.git
+#git clone https://github.com/sounddrill31/AndroidDumpsCI.git
+#cd AndroidDumpsCI
+#gh repo set-default https://github.com/sounddrill31/AndroidDumpsCI.git
 
 # Take URL as an argument
-URL=$1
+#URL=$1
 
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX-crave.yml -f ROM_URL=$URL
+#gh workflow run DumprX-crave.yml -f ROM_URL=$URL
