@@ -1,5 +1,5 @@
 from info import *
-import subprocess
+import os
 
 
 botid = 7004812988
