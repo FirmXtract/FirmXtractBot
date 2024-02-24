@@ -15,12 +15,12 @@ def command(m):
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
 
 def request(m):
-    try:
-        URL = m.text.split()[1]
-        result = os.system('bash dump.sh')
-        if result == 0:
-            bot.reply_to(m, "Succesfully requested the dump!")
-        else:
-            bot.reply_to(m, "Something went wrong")
-    except:
-        bot.send_message(m.chat.id, "I need a url to work")
+    # try:
+    #     URL = m.text.split()[1]
+    os.system('bash dump.sh')
+    #     if result == 0:
+    #         bot.reply_to(m, "Succesfully requested the dump!")
+    #     else:
+    #         bot.reply_to(m, "Something went wrong")
+    # except:
+    #     bot.send_message(m.chat.id, "I need a url to work")
