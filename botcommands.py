@@ -7,14 +7,13 @@ botid = 7004812988
 
 def command(m): 
     if m.text == "/start":
-        request(m)
+        request()
 
-def request(m):
-    URL = m.text.split()[1]
+def request():
     result = subprocess.run(
     ['ls', '-l'],
     capture_output = True, # Python >= 3.7 only
     text = True # Python >= 3.7 only
-    )
-    print(result.stdout)
-    print(result.stderr)
+)
+print(result.stdout)
+print(result.stderr)
