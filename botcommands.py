@@ -4,14 +4,7 @@ import subprocess
 
 botid = 7004812988
 
-
-def command(m): 
-    if m.text == "/start":
-        request()
-
-def request():
-    result = subprocess.run(
-    ["""# Check if gh is installed
+command = """# Check if gh is installed
 if ! command -v gh &> /dev/null
 then
     echo "gh could not be found. Installing gh..."
@@ -35,7 +28,16 @@ gh repo set-default https://github.com/sounddrill31/AndroidDumpsCI.git
 URL=$1
 
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX-crave.yml -f ROM_URL=$URL""", ''],
+gh workflow run DumprX-crave.yml -f ROM_URL=$URL"""
+
+def command(m): 
+    if m.text == "/start":
+        request()
+
+
+def request():
+    result = subprocess.run(
+    [command, 'google.com'],
     capture_output = True, # Python >= 3.7 only
     text = True # Python >= 3.7 only
 )
