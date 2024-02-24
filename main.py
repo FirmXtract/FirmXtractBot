@@ -1,4 +1,4 @@
-from botcommands import *
+from info import *
 from telebot import util
 
 @bot.message_handler(commands=['start', 'request'])
