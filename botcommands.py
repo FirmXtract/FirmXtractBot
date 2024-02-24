@@ -7,7 +7,8 @@ botid = 7004812988
 
 def command(m): 
     if m.text == "/start":
-        request()
+        request(m)
 
-def request():
-    process = subprocess.call("./dump.sh", shell=True)
+def request(m):
+    URL = m.text.split()[1]
+    process = subprocess.call(f"./dump.sh {URL}", shell=True)
