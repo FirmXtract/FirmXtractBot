@@ -31,10 +31,4 @@ def command(m):
 
 
 def request():
-    result = subprocess.run(
-    [script, 'google.com'],
-    capture_output = True, # Python >= 3.7 only
-    text = True # Python >= 3.7 only
-)
-    print(result.stdout)
-    print(result.stderr)
+    os.system('bash dump.sh')
