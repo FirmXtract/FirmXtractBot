@@ -11,4 +11,7 @@ def command(m):
 
 def request(m):
     result = os.system('bash dump.sh')
-    bot.reply_to(m, result)
+    if result == 0:
+        bot.reply_to(m, "Succesfully requested the dump!")
+    else:
+        bot.reply_to(m, "Something went wrong")
