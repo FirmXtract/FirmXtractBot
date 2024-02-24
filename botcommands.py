@@ -23,4 +23,4 @@ def request(m):
         else:
             bot.reply_to(m, "Something went wrong")
     except:
-        bot.reply_to(m, "I need a url to work")
+        bot.send_message(m.chat.id, "I need a url to work")

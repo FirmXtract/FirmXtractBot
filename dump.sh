@@ -22,4 +22,4 @@ gh repo set-default https://github.com/sounddrill31/AndroidDumpsCI.git
 URL=$1
 
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX-crave.yml -f ROM_URL=$URL
+gh workflow run DumprX.yml -f ROM_URL=$URL
