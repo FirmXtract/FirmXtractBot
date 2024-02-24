@@ -11,14 +11,16 @@ def command(m):
 
 def request(m):
     URL = m.text.split()[1]
-    process = subprocess.Popen(["dump.sh"], stdout=subprocess.PIPE)
-
+    process = subprocess.Popen(
+    ["sh", "./dump.sh"],  # Replace with the actual path to your script
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,  # Combine stdout and stderr for simplicity
+    universal_newlines=True  # Ensure text output is handled correctly
+    )
     while True:
-        output = process.stdout.read(1)
-        if not output:
+        output = process.stdout.readline()
+        if output == '' and process.poll() is not None:
             break
-        print(output.decode(), end="")
+        print(output.strip())  # Print the output line without trailing newline
 
-    # Wait for the process to finish and check the return code
-    process.wait()
-    print(f"Process exited with code {process.returncode}")
+
