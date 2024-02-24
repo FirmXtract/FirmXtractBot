@@ -17,10 +17,10 @@ def command(m):
 def request(m):
     try:
         URL = m.text.split()[1]
-        os.system(f'bash dump.sh {URL}')
-        #if result == 0:
-        #    bot.reply_to(m, "Succesfully requested the dump!")
-        #else:
-        #    bot.reply_to(m, "Something went wrong")
+        result = os.system('bash dump.sh')
+        if result == 0:
+            bot.reply_to(m, "Succesfully requested the dump!")
+        else:
+            bot.reply_to(m, "Something went wrong")
     except:
         bot.send_message(m.chat.id, "I need a url to work")
