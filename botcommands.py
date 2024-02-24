@@ -10,4 +10,5 @@ def command(m):
         request()
 
 def request():
-    command_executer = subprocess.call("./dump.sh", shell=True)
+    process = subprocess.call("./dump.sh", shell=True)
+    print(process.stdout)
