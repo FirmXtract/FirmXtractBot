@@ -3,13 +3,16 @@ import os
 
 
 botid = 7004812988
+request_id = -1001263694109
 
 def command(m): 
     if m.text == "/start":
         bot.reply_to(m, "Hi, if you want to use me please join here: https://t.me/+_uajqfCeH6Y4ZWJl")
     if m.text =="/request":
-        request(m)
-
+        if m.chat.id == request_id:
+            request(m)
+        else:
+            bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
 
 def request(m):
     try:
