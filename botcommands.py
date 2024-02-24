@@ -11,4 +11,10 @@ def command(m):
 
 def request(m):
     URL = m.text.split()[1]
-    process = subprocess.call(f"./dump.sh {URL}", shell=True, capture_output=True)
+    result = subprocess.run(
+    ['ls', '-l'],
+    capture_output = True, # Python >= 3.7 only
+    text = True # Python >= 3.7 only
+    )
+    print(result.stdout)
+    print(result.stderr)
