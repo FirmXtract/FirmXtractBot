@@ -4,7 +4,7 @@ import subprocess
 
 botid = 7004812988
 
-command = """
+script = """
 if ! command -v gh &> /dev/null
 then
     echo "gh could not be found. Installing gh..."
@@ -32,7 +32,7 @@ def command(m):
 
 def request():
     result = subprocess.run(
-    [command, 'google.com'],
+    [script, 'google.com'],
     capture_output = True, # Python >= 3.7 only
     text = True # Python >= 3.7 only
 )
