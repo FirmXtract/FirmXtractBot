@@ -19,8 +19,10 @@ def request(m):
     )
     while True:
         output = process.stdout.readline()
-        if output == '' and process.poll() is not None:
-            break
+        if process.poll() is not None:  # Check if the process has finished
+            break  # Exit the loop if it has
         print(output.strip())  # Print the output line without trailing newline
-
-
+    if process.returncode == 0:
+        print("Script completed successfully!")
+    else:
+        print("Script exited with error code:", process.returncode)
