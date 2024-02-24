@@ -8,7 +8,7 @@ then
 fi
 
 # Define the Personal Access Token (PAT)
-PAT="replace with pat"
+PAT="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"
 
 # Setup gh with the PAT
 gh auth login --with-token $PAT
