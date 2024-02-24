@@ -7,13 +7,9 @@ then
     echo "gh installed."
 fi
 
-# Define the Personal Access Token (PAT)
-export GH_TOKEN="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"
+# Authenticate against github.com by reading the token from a file
+gh auth login --with-token < token.txt
 
-source ~/.bashrc
-
-# Setup gh with the PAT
-gh auth login
 
 # Set the repository
 git clone https://github.com/sounddrill31/AndroidDumpsCI.git
