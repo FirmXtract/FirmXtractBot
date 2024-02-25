@@ -36,4 +36,5 @@ def request(m):
                         bot.reply_to(m, "Something went wrong")
     except FileNotFoundError:
         bot.reply_to(m, "Fatal error, contact admins!!!")
-        #bot.send_message(m.chat.id, "I need a url to work")
+    except IndexError:
+        bot.reply_to(m, "I need a url to work")
