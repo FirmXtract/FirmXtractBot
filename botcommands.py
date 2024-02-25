@@ -17,42 +17,13 @@ def command(m):
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
 
 def request(m):
-    URLs = []
     try:
         URL = m.text.split()[1]
-        print("Called the try block")
-        with open("requested_URLs.txt","r",encoding="utf-8") as tx:
-            print("Called the open block")
-            if tx.readlines() != []:
-                for i in tx.readlines():
-                    print("Inside the for loop!")
-                    URLs.append(i)
-                    print(i)
-                    if i in URLs:
-                        bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
-                    else:
-                        f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
-                        f_replytxt.write("\n")
-                        f_replytxt.write(f"'{URL}'")
-                        f_replytxt.close()
-                        dump_method = random.choice(dump_methods)
-                        result = os.system(f'bash {dump_method} {URL}')
-                        if result == 0:
-                            bot.reply_to(m, "Succesfully requested the dump!")
-                        else:
-                            bot.reply_to(m, "Something went wrong")
-            else:
-                f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
-                f_replytxt.write("\n")
-                f_replytxt.write(f"'{URL}'")
-                f_replytxt.close()
-                dump_method = random.choice(dump_methods)
-                result = os.system(f'bash {dump_method} {URL}')
-                if result == 0:
-                    bot.reply_to(m, "Succesfully requested the dump!")
-                else:
-                    bot.reply_to(m, "Something went wrong")
-    except FileNotFoundError:
-        bot.reply_to(m, "Fatal error, contact admins!!!")
-    except IndexError:
-        bot.reply_to(m, "I need a url to work")
+        dump_method = random.choice(dump_methods)
+        result = os.system(f'bash {dump_method} {URL}')
+        if result == 0:
+            bot.reply_to(m, "Succesfully requested the dump!")
+        else:
+            bot.reply_to(m, "Something went wrong")
+    except:
+        bot.send_message(m.chat.id, "I need a url to work")
