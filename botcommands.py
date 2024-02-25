@@ -22,7 +22,7 @@ def request(m):
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             for i in tx.readlines():
                 if i == URL:
-                    bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting isn't actually dumped")
+                    bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
                 else:
                     f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
                     f_replytxt.write("\n")
