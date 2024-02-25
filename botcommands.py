@@ -17,15 +17,15 @@ def command(m):
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
 
 def request(m):
+    URLs = []
     try:
         URL = m.text.split()[1]
         print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
             for i in tx.readlines():
-                print("WE'RE LOOPING BABY")
-                print(i)
-                if i == URL:
+                URLs.append(i)
+                if i in URLs:
                     bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
                 else:
                     f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
