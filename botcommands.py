@@ -23,6 +23,7 @@ def request(m):
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
             for i in tx.readlines():
+                print("WE'RE LOOPING BABY")
                 print(i)
                 if i == URL:
                     bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
