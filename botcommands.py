@@ -17,7 +17,7 @@ def command(m):
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
 
 def request(m):
-    #try:
+    try:
         URL = m.text.split()[1]
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             for i in tx.readlines():
@@ -34,5 +34,6 @@ def request(m):
                         bot.reply_to(m, "Succesfully requested the dump!")
                     else:
                         bot.reply_to(m, "Something went wrong")
-    #except:
+    except FileNotFoundError:
+        bot.reply_to(m, "Fatal error, contact admins!!!")
         #bot.send_message(m.chat.id, "I need a url to work")
