@@ -23,9 +23,11 @@ def request(m):
         print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
+            print(tx.readlines)
             for i in tx.readlines():
+                print("Inside the for loop!")
                 URLs.append(i)
-                if i in URLs:
+                if i in URL:
                     bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
                 else:
                     f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
