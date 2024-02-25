@@ -21,6 +21,7 @@ def request(m):
         URL = m.text.split()[1]
         print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
+            print("Called the open block")
             for i in tx.readlines():
                 print(i)
                 if i == URL:
