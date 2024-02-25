@@ -28,7 +28,7 @@ def request(m):
                 for i in tx.readlines():
                     print("Inside the for loop!")
                     URLs.append(i)
-                    if i in URL:
+                    if i in URLs:
                         bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
                     else:
                         f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
