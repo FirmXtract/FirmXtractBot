@@ -9,6 +9,7 @@ request_id = -1001263694109
 def command(m): 
     if m.text == "/start":
         bot.reply_to(m, "Hi, if you want to use me please join here: https://t.me/+_uajqfCeH6Y4ZWJl")
+        bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request":
         if m.chat.id == request_id:
             request(m)
