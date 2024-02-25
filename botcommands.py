@@ -23,7 +23,7 @@ def request(m):
         print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
-            print(tx.readlines)
+            print(tx.readlines())
             for i in tx.readlines():
                 print("Inside the for loop!")
                 URLs.append(i)
