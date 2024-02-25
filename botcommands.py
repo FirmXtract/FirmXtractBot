@@ -19,11 +19,20 @@ def command(m):
 def request(m):
     try:
         URL = m.text.split()[1]
-        dump_method = random.choice(dump_methods)
-        result = os.system(f'bash {dump_method} {URL}')
-        if result == 0:
-            bot.reply_to(m, "Succesfully requested the dump!")
-        else:
-            bot.reply_to(m, "Something went wrong")
+        with open("requested_URLs.txt","r",encoding="utf-8") as tx:
+            for i in tx.readlines():
+                if i == URL:
+                    pass
+                else:
+                    f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
+                    f_replytxt.write("\n")
+                    f_replytxt.write(URL)
+                    f_replytxt.close()
+                    dump_method = random.choice(dump_methods)
+                    result = os.system(f'bash {dump_method} {URL}')
+                    if result == 0:
+                        bot.reply_to(m, "Succesfully requested the dump!")
+                    else:
+                        bot.reply_to(m, "Something went wrong")
     except:
         bot.send_message(m.chat.id, "I need a url to work")
