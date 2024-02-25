@@ -24,7 +24,7 @@ def request(m):
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
             print(tx.readlines())
-            if i != []:
+            if tx.readlines() != []:
                 for i in tx.readlines():
                     print("Inside the for loop!")
                     URLs.append(i)
