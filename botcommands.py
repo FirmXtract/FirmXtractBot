@@ -23,17 +23,17 @@ def request(m):
         print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             print("Called the open block")
-            print(tx.readlines())
             if tx.readlines() != []:
                 for i in tx.readlines():
                     print("Inside the for loop!")
                     URLs.append(i)
+                    print(i)
                     if i in URLs:
                         bot.reply_to(m, "This FW has been requested before, make sure that what you're requesting a FW that isn't actually dumped")
                     else:
                         f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
                         f_replytxt.write("\n")
-                        f_replytxt.write(URL)
+                        f_replytxt.write(f"'{URL}'")
                         f_replytxt.close()
                         dump_method = random.choice(dump_methods)
                         result = os.system(f'bash {dump_method} {URL}')
@@ -44,7 +44,7 @@ def request(m):
             else:
                 f_replytxt=open("requested_URLs.txt","a",encoding="utf-8")
                 f_replytxt.write("\n")
-                f_replytxt.write(URL)
+                f_replytxt.write(f"'{URL}'")
                 f_replytxt.close()
                 dump_method = random.choice(dump_methods)
                 result = os.system(f'bash {dump_method} {URL}')
