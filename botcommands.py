@@ -19,6 +19,7 @@ def command(m):
 def request(m):
     try:
         URL = m.text.split()[1]
+        print("Called the try block")
         with open("requested_URLs.txt","r",encoding="utf-8") as tx:
             for i in tx.readlines():
                 print(i)
