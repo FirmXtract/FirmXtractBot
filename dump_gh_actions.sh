@@ -12,9 +12,9 @@ gh auth login --with-token < token.txt
 
 
 # Set the repository
-git clone https://github.com/sounddrill31/AndroidDumpsCI.git
+git clone https://github.com/OkBuddyGSI/AndroidDumpsCI.git
 cd AndroidDumpsCI
-gh repo set-default https://github.com/sounddrill31/AndroidDumpsCI.git
+gh repo set-default https://github.com/OkBuddyGSI/AndroidDumpsCI.git
 
 # Take URL as an argument
 URL=$1
