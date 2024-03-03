@@ -33,7 +33,7 @@ EOF
 }
 
 # Set your GitHub username and token file path here
-github_username="sounddrill31"
+github_username="IMYdev"
 token_file="token.txt"
 
 # Call the function to store the credentials
