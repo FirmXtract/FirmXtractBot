@@ -13,5 +13,12 @@ gh auth login --with-token < token.txt
 # Pull Latest source code
 git pull
 
-# Start the bot
-python3 main.py
+# Start the bot in tmux window
+if tmux has-session -t dumperbot; then 
+    echo "Bot is already Running" 
+else 
+    tmux kill-session -t dumperbot;
+    tmux new-session -d -s dumperbot
+    tmux send-keys -t dumperbot 'python3 main.py' Enter 
+    echo "Runner Started"
+fi
