@@ -9,6 +9,15 @@ then
     echo "gh installed."
 fi
 
+if ! command -v tmux &> /dev/null
+then
+    echo "tmux could not be found. Installing tmux..."
+    sudo apt update
+    sudo apt install tmux -y
+    echo "gh installed."
+fi
+
+
 # Authenticate using GH
 gh auth login --with-token < token.txt
 
