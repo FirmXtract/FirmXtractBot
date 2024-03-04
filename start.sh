@@ -15,6 +15,9 @@ gh auth login --with-token < token.txt
 # Perform the git pull command
 git pull origin main
 
+# Setup bot credentials
+sed -i "s/TOKEN/$(cat tele_token.txt)/g" info.py
+
 # Parse command line argument
 case $1 in
     --kill)

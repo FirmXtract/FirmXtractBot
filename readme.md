@@ -1,6 +1,6 @@
 # Bot to send workflow requests
 
-Step 1: Create token.txt with your github PAT. 
+Step 1: Create token.txt with your github PAT and tele_token.txt with your Telegram Bot Token
 
 Step 2: Start the bot
 ```./start.sh```
