@@ -2,8 +2,7 @@ from info import *
 import random
 import os
 
-#dump_methods = ["dump_crave.sh", "dump_gh_actions.sh"]
-dump_methods = ["dump_gh_actions.sh"]
+dump_methods = ["dump_crave.sh", "dump_gh_actions.sh"]
 botid = 7004812988
 request_id = -1001263694109
 
