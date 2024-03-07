@@ -23,6 +23,7 @@ def request(m):
         result = os.system(f'bash {dump_method} {URL}')
         if result == 0:
             bot.reply_to(m, "Succesfully requested the dump!")
+            bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
         else:
             bot.reply_to(m, "Something went wrong")
     except:
