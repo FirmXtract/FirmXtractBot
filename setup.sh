@@ -14,7 +14,7 @@ then
     echo "tmux could not be found. Installing tmux..."
     sudo apt update
     sudo apt install tmux -y
-    echo "gh installed."
+    echo "tmux installed."
 fi
 
 
