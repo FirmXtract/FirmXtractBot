@@ -4,14 +4,14 @@ import os
 
 dump_methods = ["dump_crave.sh", "dump_gh_actions.sh"]
 botid = 7004812988
-request_id = -1001263694109
+request_id = [-1001263694109, -1002108265780]
 
 def command(m): 
     if m.text == "/start":
         bot.reply_to(m, "Hi, if you want to use me please join here: https://t.me/+_uajqfCeH6Y4ZWJl")
         bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
-        if m.chat.id == request_id:
+        if m.chat.id in request_id:
             request(m)
         else:
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
