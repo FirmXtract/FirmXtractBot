@@ -20,4 +20,4 @@ gh repo set-default https://github.com/OkBuddyGSI/AndroidDumpsCI.git
 URL=$1
 
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX.yml -f ROM_URL=$URL
+gh workflow run DumprX.yml -f ROM_URL=$URL ROM_URL=$URL EXTRA_CMD="sudo wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup -O "/usr/local/bin/pdup"; sudo chmod +x "/usr/local/bin/pdup"; pdup out/vbmeta.img"
