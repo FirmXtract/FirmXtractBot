@@ -13,7 +13,7 @@ gh auth login --with-token < token.txt
 
 # Set the repository
 git clone https://github.com/OkBuddyGSI/extract_proprietary_blobs.git
-cd AndroidDumpsCI
+cd extract_proprietary_blobs
 gh repo set-default https://github.com/OkBuddyGSI/extract_proprietary_blobs.git
 
 # Take URL as an argument
