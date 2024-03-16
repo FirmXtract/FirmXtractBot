@@ -12,6 +12,7 @@ gh auth login --with-token < token.txt
 
 
 # Set the repository
+rm -rf extract_proprietary_blobs
 git clone https://github.com/OkBuddyGSI/extract_proprietary_blobs.git
 cd extract_proprietary_blobs
 gh repo set-default https://github.com/OkBuddyGSI/extract_proprietary_blobs.git
