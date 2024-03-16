@@ -21,6 +21,15 @@ def command(m):
             vndr_gen(m)
         else: 
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
+    if m.text.split()[0] == "/workflows":
+        try:
+            request = m.text.split()[1]
+            if request == "vendor":
+                return_workflows(m, "vendor")
+            else:
+                return_workflows(m, "dump")
+        except:
+            bot.reply_to(m, "Something bad happened bruv")
 def dump(m):
     try:
         URL = m.text.split()[1]
@@ -52,3 +61,14 @@ def vndr_gen(m):
         bot.reply_to(m, "Please give all the arguments in the correct order")
         bot.reply_to(m, "Usage is as follows: /vt {dump_link} {dump_repo_branch} {device_tree_link} {device_tree_branch} {device_codename} {device_vendor_name}")
         bot.reply_to(m, "example: /vt https://gitlab.com/sounddrill311/infinix/Infinix-X6816/-/tree/sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys/ sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys https://github.com/IMYdev/android_device_infinix_X6816 lineage-20 X6816 Infinix")
+
+def return_workflows(m, workflow):
+    if workflow == "vendor":
+        list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
+        result = os.popen(list)
+        bot.reply_to(m, result)
+    if workflow == "dump":
+        list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
+        result = os.popen(list)
+        bot.reply_to(m, result)
+        
