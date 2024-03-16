@@ -22,14 +22,11 @@ def command(m):
         else: 
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
     if m.text.split()[0] == "/workflows":
-        try:
-            request = m.text.split()[1]
-            if request == "vendor":
-                return_workflows(m, "vendor")
-            else:
-                return_workflows(m, "dump")
-        except:
-            bot.reply_to(m, "Something bad happened bruv")
+        request = m.text.split()[1]
+        if request == "vendor":
+            return_workflows(m, "vendor")
+        else:
+            return_workflows(m, "dump")
 def dump(m):
     try:
         URL = m.text.split()[1]
