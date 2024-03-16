@@ -70,5 +70,6 @@ def return_workflows(m, workflow):
     if workflow == "dump":
         list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
         result = os.popen(list)
-        bot.reply_to(m, result.readlines())
+        for i in result.readline():
+            bot.reply_to(m, i)
         
