@@ -74,5 +74,5 @@ def return_workflows(m, workflow):
         for i in result.readlines():
             while workflows < 6:
                 bot.reply_to(m, i)
-                workflows + 1
+                workflows += 1
         
