@@ -22,11 +22,14 @@ def command(m):
         else: 
             bot.reply_to(m, "Please join this group and use me there: https://t.me/+_uajqfCeH6Y4ZWJl")
     if m.text.split()[0] == "/workflows":
-        request = m.text.split()[1]
-        if request == "vendor":
-            return_workflows(m, "vendor")
-        else:
-            return_workflows(m, "dump")
+        try:
+            request = m.text.split()[1]
+            if request == "vendor":
+                return_workflows(m, "vendor")
+            else:
+                return_workflows(m, "dump")
+        except:
+            bot.reply_to(m, "Something bad happened bruv")
 def dump(m):
     try:
         URL = m.text.split()[1]
@@ -64,7 +67,7 @@ def return_workflows(m, workflow):
         list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
         result = os.popen(list)
         workflows = 1
-        i = result.read().split(Z)
+        i = result.read().split("Z")
         while workflows < 6:
             bot.reply_to(m, i)
             workflows += 1
@@ -72,7 +75,7 @@ def return_workflows(m, workflow):
         list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
         result = os.popen(list)
         workflows = 1
-        i = result.read().split(Z)
+        i = result.read().split("Z")
         while workflows < 6:
             bot.reply_to(m, i)
             workflows += 1
