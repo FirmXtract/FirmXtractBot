@@ -49,6 +49,6 @@ def vndr_gen(m):
         else:
             bot.reply_to(m, "Something went wrong")
     except:
-        bot.reply_to(m.chat.id, "Please give all the arguments in the correct order")
-        bot.reply_to(m.chat.id, "Usage is as follows: /vt {dump_link} {dump_repo_branch} {device_tree_link} {device_tree_branch} {device_codename} {device_vendor_name}")
-        bot.reply_to(m.chat.id, "example: /vt https://gitlab.com/sounddrill311/infinix/Infinix-X6816/-/tree/sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys/ sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys https://github.com/IMYdev/android_device_infinix_X6816 lineage-20 X6816 Infinix")
+        bot.reply_to(m, "Please give all the arguments in the correct order")
+        bot.reply_to(m, "Usage is as follows: /vt {dump_link} {dump_repo_branch} {device_tree_link} {device_tree_branch} {device_codename} {device_vendor_name}")
+        bot.reply_to(m, "example: /vt https://gitlab.com/sounddrill311/infinix/Infinix-X6816/-/tree/sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys/ sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys https://github.com/IMYdev/android_device_infinix_X6816 lineage-20 X6816 Infinix")
