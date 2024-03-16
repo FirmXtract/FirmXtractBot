@@ -66,7 +66,11 @@ def return_workflows(m, workflow):
     if workflow == "vendor":
         list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
         result = os.popen(list)
-        bot.reply_to(m, result)
+        workflows = 1
+        for i in result.readlines():
+            while workflows < 6:
+                bot.reply_to(m, i)
+                workflows += 1
     if workflow == "dump":
         list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
         result = os.popen(list)
