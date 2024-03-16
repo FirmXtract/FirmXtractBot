@@ -67,7 +67,7 @@ def return_workflows(m, workflow):
         list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
         result = os.popen(list)
         workflows = 1
-        for i in result.readlines():
+        for i in result.read():
             while workflows < 6:
                 bot.reply_to(m, i)
                 workflows += 1
@@ -75,7 +75,7 @@ def return_workflows(m, workflow):
         list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
         result = os.popen(list)
         workflows = 1
-        for i in result.readlines():
+        for i in result.read():
             while workflows < 6:
                 bot.reply_to(m, i)
                 workflows += 1
