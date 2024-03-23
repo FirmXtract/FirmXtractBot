@@ -54,7 +54,7 @@ def vndr_gen(m):
         result = os.system(f'bash {vndr_gen_script} {dump_link} {dump_branch} {device_tree_link} {device_tree_branch} {codename} {vendor}')
         if result == 0:
             bot.reply_to(m, "Succesfully requested the vendor tree generation!")
-            bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+            bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/extract_proprietary_blobs/actions")
         else:
             bot.reply_to(m, "Something went wrong")
     except:
