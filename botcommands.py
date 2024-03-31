@@ -1,4 +1,5 @@
 from info import *
+import validators
 import random
 import os
 
@@ -33,8 +34,9 @@ def command(m):
 def dump(m):
     try:
         URL = m.text.split()[1]
+        validated = validators.url(URL)
         dump_method = random.choice(dump_methods)
-        result = os.system(f'bash {dump_method} {URL}')
+        result = os.system(f'bash {dump_method} {validated}')
         if result == 0:
             bot.reply_to(m, "Succesfully requested the dump!")
             bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
@@ -43,35 +45,6 @@ def dump(m):
     except:
         bot.send_message(m.chat.id, "I need a url to work")
 
-def vndr_gen(m):
-    try:
-        dump_link = m.text.split()[1]
-        dump_branch = m.text.split()[2]
-        device_tree_link = m.text.split()[3]
-        device_tree_branch = m.text.split()[4]
-        codename = m.text.split()[5]
-        vendor = m.text.split()[6]
-        result = os.system(f'bash {vndr_gen_script} {dump_link} {dump_branch} {device_tree_link} {device_tree_branch} {codename} {vendor}')
-        if result == 0:
-            bot.reply_to(m, "Succesfully requested the vendor tree generation!")
-            bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/extract_proprietary_blobs/actions")
-        else:
-            bot.reply_to(m, "Something went wrong")
-    except:
-        bot.reply_to(m, "Please give all the arguments in the correct order")
-        bot.reply_to(m, "Usage is as follows: /vt {dump_link} {dump_repo_branch} {device_tree_link} {device_tree_branch} {device_codename} {device_vendor_name}")
-        bot.reply_to(m, "example: /vt https://gitlab.com/sounddrill311/infinix/Infinix-X6816/-/tree/sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys/ sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys https://github.com/IMYdev/android_device_infinix_X6816 lineage-20 X6816 Infinix")
-
-def return_workflows(m, workflow):
-    if workflow == "vendor":
-        list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
-        result = os.popen(list)
-        workflows = 1
-        i = result.read()
-        if "in_progress" in i:
-            bot.reply_to(m, i)
-        else:
-            bot.reply_to(m, "There are no running workflows")
     if workflow == "dump":
         list = "cd AndroidDumpsCI && gh run list --workflow=DumprX.yml"
         result = os.popen(list)
@@ -81,7 +54,34 @@ def return_workflows(m, workflow):
             bot.reply_to(m, i)
         else:
             bot.reply_to(m, "There are no running workflows")
-        #while workflows < 6:
-            #bot.reply_to(m, i)
-            #workflows += 1
+# def vndr_gen(m):
+#     try:
+#         dump_link = m.text.split()[1]
+#         dump_branch = m.text.split()[2]
+#         device_tree_link = m.text.split()[3]
+#         device_tree_branch = m.text.split()[4]
+#         codename = m.text.split()[5]
+#         vendor = m.text.split()[6]
+#         result = os.system(f'bash {vndr_gen_script} {dump_link} {dump_branch} {device_tree_link} {device_tree_branch} {codename} {vendor}')
+#         if result == 0:
+#             bot.reply_to(m, "Succesfully requested the vendor tree generation!")
+#             bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/extract_proprietary_blobs/actions")
+#         else:
+#             bot.reply_to(m, "Something went wrong")
+#     except:
+#         bot.reply_to(m, "Please give all the arguments in the correct order")
+#         bot.reply_to(m, "Usage is as follows: /vt {dump_link} {dump_repo_branch} {device_tree_link} {device_tree_branch} {device_codename} {device_vendor_name}")
+#         bot.reply_to(m, "example: /vt https://gitlab.com/sounddrill311/infinix/Infinix-X6816/-/tree/sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys/ sys_tssi_64_infinix-user-11-RP1A.200720.011-287229-release-keys https://github.com/IMYdev/android_device_infinix_X6816 lineage-20 X6816 Infinix")
+
+# def return_workflows(m, workflow):
+#     if workflow == "vendor":
+#         list = "cd extract_proprietary_blobs && gh run list --workflow=extract-blobs.yml"
+#         result = os.popen(list)
+#         workflows = 1
+#         i = result.read()
+#         if "in_progress" in i:
+#             bot.reply_to(m, i)
+#         else:
+#             bot.reply_to(m, "There are no running workflows")
+
         
