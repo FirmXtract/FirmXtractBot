@@ -35,18 +35,19 @@ def dump(m):
     try:
         URL = m.text.split()[1]
         URL_check = f"https://{URL}\n"
+        URL_check1 = f"https://www.{URL}\n"
         validated = validators.url(URL)
         dump_method = random.choice(dump_methods)
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
-        if validated and URL_check not in lines: 
+        if validated and URL_check not in lines or validated and URL_check1 not in lines: 
             result = os.system(f'bash {dump_method} {URL}')
             if result == 0:
                 bot.reply_to(m, "Succesfully requested the dump!")
                 bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
             else:
                 bot.reply_to(m, "Something went wrong")
-        elif validated and URL_check in lines:
+        elif validated and URL_check in lines or validated and URL_check1 in lines:
             bot.reply_to(m, "Go fuck yourself you horny bastard")
         else:
             bot.reply_to(m, "Provide me with a valid URL or go play elsewhere")
