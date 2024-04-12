@@ -34,22 +34,24 @@ def command(m):
 def dump(m):
     try:
         URL = m.text.split()[1]
-        URL_check = f"https://{URL}\n"
-        URL_check1 = f"https://www.{URL}\n"
         validated = validators.url(URL)
-        bot.send_message(m.chat.id, f"here's the urls I'm checking rn: {URL_check} and {URL_check1}")
         dump_method = random.choice(dump_methods)
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
-        if validated and URL_check not in lines or validated and URL_check1 not in lines: 
-            result = os.system(f'bash {dump_method} {URL}')
-            if result == 0:
-                bot.reply_to(m, "Succesfully requested the dump!")
-                bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+        if validated:
+            URL_check = URL.split(":")[1]
+            URL_check1 = URL_check.split(".")[1]
+            bot.send_message(m.chat.id, f"here's the urls I'm checking rn: {URL_check} and {URL_check1}")
+
+            if URL_check in url_list or URL_check1 in url_list:
+                bot.reply_to(m, "Go fuck yourself you horny bastard")
             else:
-                bot.reply_to(m, "Something went wrong")
-        elif validated and URL_check in lines or validated and URL_check1 in lines:
-            bot.reply_to(m, "Go fuck yourself you horny bastard")
+                result = os.system(f'bash {dump_method} {URL}')
+                if result == 0:
+                    bot.reply_to(m, "Succesfully requested the dump!")
+                    bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+                else:
+                    bot.reply_to(m, "Something went wrong")        
         else:
             bot.reply_to(m, "Provide me with a valid URL or go play elsewhere")
     except:
