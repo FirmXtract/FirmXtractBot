@@ -39,12 +39,12 @@ def dump(m):
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
         if validated:
-            URL = URL.split("//")[1]
-            URL_check = f"{URL}\n"
-            URL_check1 = URL_check.split(".")[1]
-            URL_check2 = f"{URL_check1}\n"
+            URL_check = URL.split("//")[1]
+            URL_check1 = f"{URL}\n"
+            URL_check2 = URL_check.split(".")[1]
+            URL_check3 = f"{URL_check1}\n"
 
-            if URL_check in lines or URL_check2 in lines:
+            if URL_check1 in lines or URL_check3 in lines:
                 bot.reply_to(m, "Go fuck yourself you horny bastard")
             else:
                 result = os.system(f'bash {dump_method} {URL}')
