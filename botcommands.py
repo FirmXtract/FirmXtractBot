@@ -34,7 +34,7 @@ def command(m):
 def dump(m):
     try:
         URL = m.text.split()[1]
-        URL_check = f"{URL}\n"
+        URL_check = f"https://{URL}\n"
         validated = validators.url(URL)
         dump_method = random.choice(dump_methods)
         url_list = open('bad.txt', 'r')
