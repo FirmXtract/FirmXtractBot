@@ -37,6 +37,7 @@ def dump(m):
         URL_check = f"https://{URL}\n"
         URL_check1 = f"https://www.{URL}\n"
         validated = validators.url(URL)
+        bot.send_message(m.chat.id, f"here's the urls I'm checking rn: {URL_check} and {URL_check1}")
         dump_method = random.choice(dump_methods)
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
