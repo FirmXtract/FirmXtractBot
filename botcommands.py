@@ -1,4 +1,5 @@
 from info import *
+import validators
 import random
 import os
 
@@ -33,15 +34,19 @@ def command(m):
 def dump(m):
     try:
         URL = m.text.split()[1]
+        validated = validators.url(URL)
         dump_method = random.choice(dump_methods)
-        result = os.system(f'bash {dump_method} {URL}')
-        if result == 0:
-            bot.reply_to(m, "Succesfully requested the dump!")
-            bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+        if validated: 
+            result = os.system(f'bash {dump_method} {URL}')
+            if result == 0:
+                bot.reply_to(m, "Succesfully requested the dump!")
+                bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+            else:
+                bot.reply_to(m, "Something went wrong")
         else:
-            bot.reply_to(m, "Something went wrong")
+            bot.reply_to(m, "Provide me with a valid URL or go play elsewhere")
     except:
-        bot.send_message(m.chat.id, "I need a url to work")
+        bot.send_message(m.chat.id, "Provide me with a valid URL or go play elsewhere")
 
 def vndr_gen(m):
     try:
