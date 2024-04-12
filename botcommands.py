@@ -39,7 +39,7 @@ def dump(m):
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
         if validated:
-            URL_check = URL.split(":")[1]
+            URL_check = URL.split("//")[1]
             URL_check1 = URL_check.split(".")[1]
             bot.send_message(m.chat.id, f"here's the urls I'm checking rn: {URL_check} and {URL_check1}")
 
