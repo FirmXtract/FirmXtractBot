@@ -45,7 +45,7 @@ def dump(m):
             URL_check2 = f"{URL_check1}\n"
             bot.send_message(m.chat.id, f"here's the urls I'm checking rn: {URL_check} and {URL_check2}")
 
-            if URL_check in url_list or URL_check2 in url_list:
+            if URL_check in lines or URL_check2 in lines:
                 bot.reply_to(m, "Go fuck yourself you horny bastard")
             else:
                 result = os.system(f'bash {dump_method} {URL}')
