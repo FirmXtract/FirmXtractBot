@@ -47,7 +47,7 @@ def dump(m):
             else:
                 bot.reply_to(m, "Something went wrong")
         elif validated and URL_check in lines:
-            bot.reply_to(m, Go fuck yourself you horny bastard)
+            bot.reply_to(m, "Go fuck yourself you horny bastard")
         else:
             bot.reply_to(m, "Provide me with a valid URL or go play elsewhere")
     except:
