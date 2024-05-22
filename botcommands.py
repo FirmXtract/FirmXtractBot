@@ -38,6 +38,7 @@ def dump(m):
         dump_method = random.choice(dump_methods)
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
+        username = bot.get_chat(m.from_user.id).username
         if validated:
             URL_check = URL.split("//")[1]
             URL_check1 = f"{URL_check}\n"
@@ -49,8 +50,8 @@ def dump(m):
             else:
                 result = os.system(f'bash {dump_method} {URL}')
                 if result == 0:
-                    bot.reply_to(m, "Succesfully requested the dump!")
-                    bot.reply_to(m, "You can follow the progress here: https://github.com/OkBuddyGSI/AndroidDumpsCI/actions")
+                    bot.reply_to(m, f"Succesfully requested your dump @{username}. Dump URL: {URL}")
+                    bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
         else:
