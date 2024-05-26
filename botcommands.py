@@ -12,17 +12,20 @@ def command(m):
         bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
         if m.chat.id in request_id:
-            try:
-                if m.text.split()[2] == "--crave":
-                    status = bot.get_chat_member(m.chat.id, m.from_user.id).status
-                    if status == "administrator" or status == "creator":
-                        crave_dump(m)
-                    else:
-                        bot.reply_to(m, f"Umm, well crave is only for admins to use")
-            except IndexError:
-                dump(m)
-            except Exception as error:
-                bot.reply_to(m, f"Umm, well something got fucked, here's what it is: {error}")
+            if bot.get_chat_member(m.chat.id, m.from_user.id).username == None:
+                bot.reply_to(m, f"You got no username, go cry about it please (;")
+            else:
+                try:
+                    if m.text.split()[2] == "--crave":
+                        status = bot.get_chat_member(m.chat.id, m.from_user.id).status
+                        if status == "administrator" or status == "creator":
+                            crave_dump(m)
+                        else:
+                            bot.reply_to(m, f"Umm, well crave is only for admins to use")
+                except IndexError:
+                    dump(m)
+                except Exception as error:
+                    bot.reply_to(m, f"Umm, well something got fucked, here's what it is: {error}")
         else:
             bot.reply_to(m, f"Please join this group and use me there: {request_group_link}")
     # if m.text.split()[0] == "/vt":
