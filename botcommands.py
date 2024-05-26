@@ -12,8 +12,8 @@ def command(m):
         bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
         if m.chat.id in request_id:
-            if bot.get_chat_member(m.chat.id, m.from_user.id).username == None:
-                bot.reply_to(m, f"You got no username, go cry about it please (;")
+            if bot.get_chat_member(m.chat.id, m.from_user.id).user.username != None:
+                bot.reply_to(m, f"dis is a test if do it right, @IMYdev you rock, me!")
             else:
                 try:
                     if m.text.split()[2] == "--crave":
