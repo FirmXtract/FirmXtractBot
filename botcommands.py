@@ -21,8 +21,8 @@ def command(m):
                         bot.reply_to(m, f"Umm, well crave is only for admins to use")
             except IndexError:
                 dump(m)
-            except:
-                bot.reply_to(m, f"Umm, well something got fucked")
+            except Exception as error:
+                bot.reply_to(m, f"Umm, well something got fucked, here's what it is: {error}")
         else:
             bot.reply_to(m, f"Please join this group and use me there: {request_group_link}")
     # if m.text.split()[0] == "/vt":
