@@ -51,7 +51,7 @@ def dump(m):
             else:
                 result = os.system(f'bash {dump_method} {URL}')
                 if result == 0:
-                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\n Dump URL: {URL}")
+                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {dump_method}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
@@ -79,7 +79,7 @@ def crave_dump(m):
             else:
                 result = os.system(f'bash {dump_method} {URL}')
                 if result == 0:
-                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\n Dump URL: {URL}")
+                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {dump_method}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
