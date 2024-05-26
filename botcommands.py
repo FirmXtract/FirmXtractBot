@@ -8,14 +8,17 @@ request_id = [-1001263694109, -1002108265780]
 request_group_link = "https://t.me/+_uajqfCeH6Y4ZWJl"
 def command(m): 
     if m.text == "/start":
-        bot.reply_to(m, f"Hi, if you want to use me please join here: ")
+        bot.reply_to(m, f"Hi, if you want to use me please join here: {request_group_link}")
         bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
         if m.chat.id in request_id:
-            if m.text.split()[2] == "--crave":
-                crave_dump(m)
-            else:
+            try:
+                if m.text.split()[2] == "--crave":
+                    crave_dump(m)
+            except IndexError:
                 dump(m)
+            except:
+                bot.reply_to(m, f"Umm, well something got fucked")
         else:
             bot.reply_to(m, f"Please join this group and use me there: {request_group_link}")
     # if m.text.split()[0] == "/vt":
