@@ -14,7 +14,11 @@ def command(m):
         if m.chat.id in request_id:
             try:
                 if m.text.split()[2] == "--crave":
-                    crave_dump(m)
+                    status = bot.get_chat_member(m.chat.id,m.reply_to_message.from_user.id).status
+                    if status == "administrator" or status == "creator":
+                        crave_dump(m)
+                    else:
+                        bot.reply_to(m, f"Umm, well crave is only for admins to use")
             except IndexError:
                 dump(m)
             except:
