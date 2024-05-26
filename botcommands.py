@@ -2,7 +2,7 @@ from info import *
 import validators
 import os
 
-dump_methods = ["dump_gh_actions.sh", "dump_crave.sh"]
+dump_methods = ["Github actions:dump_gh_actions.sh", "Crave:dump_crave.sh"]
 #vndr_gen_script = "vendor_tree.sh"
 request_id = [-1001263694109, -1002108265780]
 request_group_link = "https://t.me/+_uajqfCeH6Y4ZWJl"
@@ -37,6 +37,8 @@ def dump(m):
         URL = m.text.split()[1]
         validated = validators.url(URL)
         dump_method = dump_methods[0]
+        name = dump_method.split(":")[0]
+        script = dump_method.split(":")[1]
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
         username = bot.get_chat(m.from_user.id).username
@@ -51,7 +53,7 @@ def dump(m):
             else:
                 result = os.system(f'bash {dump_method} {URL}')
                 if result == 0:
-                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {dump_method}")
+                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
@@ -65,6 +67,8 @@ def crave_dump(m):
         URL = m.text.split()[1]
         validated = validators.url(URL)
         dump_method = dump_methods[1]
+        name = dump_method.split(":")[0]
+        script = dump_method.split(":")[1]
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
         username = bot.get_chat(m.from_user.id).username
@@ -79,7 +83,7 @@ def crave_dump(m):
             else:
                 result = os.system(f'bash {dump_method} {URL}')
                 if result == 0:
-                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {dump_method}")
+                    bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
