@@ -17,7 +17,7 @@ cd AndroidDumpsCI
 gh repo set-default https://github.com/OkBuddyGSI/AndroidDumpsCI.git
 
 # Take URL as an argument
-URL=$2
+URL=$3
 USERNAME=$1
 echo $USERNAME
 # Run the GitHub Actions workflow with the specified URL
