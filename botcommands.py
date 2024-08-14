@@ -52,6 +52,7 @@ def dump(m):
         url_list = open('bad.txt', 'r')
         lines = url_list.readlines()
         username = bot.get_chat(m.from_user.id).username
+        print(username)
         if validated:
             URL_check = URL.split("//")[1]
             URL_check1 = f"{URL_check}\n"
