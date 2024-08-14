@@ -61,7 +61,7 @@ def dump(m):
             if URL_check1 in lines or URL_check3 in lines:
                 bot.reply_to(m, "Go fuck yourself you horny bastard")
             else:
-                result = os.system(f'bash {script} {URL}')
+                result = os.system(f'bash {script} {URL} {username}')
                 if result == 0:
                     bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
@@ -91,7 +91,7 @@ def crave_dump(m):
             if URL_check1 in lines or URL_check3 in lines:
                 bot.reply_to(m, "Go fuck yourself you horny bastard")
             else:
-                result = os.system(f'bash {script} {URL} "{username}"')
+                result = os.system(f'bash {script} {URL}')
                 if result == 0:
                     bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
                     bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
