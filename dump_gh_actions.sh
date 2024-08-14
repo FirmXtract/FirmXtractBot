@@ -21,4 +21,4 @@ URL=$2
 USERNAME=$1
 echo $USERNAME
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX.yml -f ROM_URL=$URL EXTRA_CMD="sudo wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup -O "/usr/local/bin/pdup"; sudo chmod +x "/usr/local/bin/pdup"; pdup out/vbmeta.img" USER_NAME=$USERNAME 
+gh workflow run DumprX.yml -f ROM_URL=$URL USER_NAME=$USERNAME EXTRA_CMD="sudo wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup -O "/usr/local/bin/pdup"; sudo chmod +x "/usr/local/bin/pdup"; pdup out/vbmeta.img"
