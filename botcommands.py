@@ -5,7 +5,7 @@ import os
 dump_methods = ["Github actions:dump_gh_actions.sh", "Crave:dump_crave.sh"]
 #vndr_gen_script = "vendor_tree.sh"
 request_id = [-1001263694109, -1002108265780]
-request_group_link = "https://t.me/+_uajqfCeH6Y4ZWJl"
+request_group_link = "https://t.me/OkBuddyGSI"
 def command(m): 
     if m.text == "/start":
         bot.reply_to(m, f"Hi, if you want to use me please join here: {request_group_link}")
