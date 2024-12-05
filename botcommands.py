@@ -4,12 +4,11 @@ import os
 
 dump_methods = ["Github actions:dump_gh_actions.sh", "Crave:dump_crave.sh"]
 #vndr_gen_script = "vendor_tree.sh"
-request_id = [-1001263694109, -1002108265780]
-request_group_link = "https://t.me/OkBuddyGSI"
+request_id = [-1002174321619, -1002480319806, -1002445538345]
+request_group_link = "https://t.me/DelightOSChat"
 def command(m): 
     if m.text == "/start":
         bot.reply_to(m, f"Hi, if you want to use me please join here: {request_group_link}")
-        bot.send_message(m.chat.id, f"This bot is made by {bot_creator}")
     if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
         if m.chat.id in request_id:
             if bot.get_chat_member(m.chat.id, m.from_user.id).user.username == None:
@@ -65,7 +64,7 @@ def dump(m):
                 result = os.system(f'bash {script} {URL} {username}')
                 if result == 0:
                     bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
-                    bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
+                    bot.reply_to(m, "Check @FirmXtract for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
         else:

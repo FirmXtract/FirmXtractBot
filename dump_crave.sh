@@ -12,12 +12,12 @@ gh auth login --with-token < token.txt
 
 
 # Set the repository
-git clone https://github.com/OkBuddyGSI/AndroidDumpsCI.git
-cd AndroidDumpsCI
-gh repo set-default https://github.com/OkBuddyGSI/AndroidDumpsCI.git
+git clone https://github.com/FirmXtract/FirmXtract.git
+cd FirmXtract
+gh repo set-default https://github.com/FirmXtract/FirmXtract.git
 
 # Take URL as an argument
 URL=$1
 
 # Run the GitHub Actions workflow with the specified URL
-gh workflow run DumprX-crave.yml -f ROM_URL=$URL EXTRA_CMD="sudo wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup -O "/usr/local/bin/pdup"; sudo chmod +x "/usr/local/bin/pdup"; pdup out/vbmeta.img"
+gh workflow run FirmXtract-Crave.yml -f ROM_URL=$URL EXTRA_CMD="sudo wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup -O "/usr/local/bin/pdup"; sudo chmod +x "/usr/local/bin/pdup"; pdup out/vbmeta.img"
