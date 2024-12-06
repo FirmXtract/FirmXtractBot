@@ -110,7 +110,7 @@ def crave_dump(m):
                 result = os.system(f'bash {script} {URL}')
                 if result == 0:
                     bot.reply_to(m, f"Succesfully requested your dump @{username}.\nDump URL: {URL}\nDump Method: {name}")
-                    bot.reply_to(m, "Check @okbuddygsi_stuff for successful dumps")
+                    bot.reply_to(m, "Check @FirmXtract for successful dumps")
                 else:
                     bot.reply_to(m, "Something went wrong")        
         else:
