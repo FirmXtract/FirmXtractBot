@@ -4,29 +4,45 @@ import os
 
 dump_methods = ["Github actions:dump_gh_actions.sh", "Crave:dump_crave.sh"]
 #vndr_gen_script = "vendor_tree.sh"
-request_id = [-1002174321619, -1002480319806, -1002445538345]
-request_group_link = "https://t.me/DelightOSChat"
-def command(m): 
+request_id = []
+request_group_link = ""
+def command(m):
     if m.text == "/start":
-        bot.reply_to(m, f"Hi, if you want to use me please join here: {request_group_link}")
-    if m.text.split()[0] =="/request" or m.text.split()[0] =="/dump":
-        if m.chat.id in request_id:
-            if bot.get_chat_member(m.chat.id, m.from_user.id).user.username == None:
-                bot.reply_to(m, f"You got no username, go cry about it please (;")
+        bot.reply_to(m, "Hi, welcome! Use /dump <URL> to request a firmware dump.")
+    elif m.text.split()[0] in ["/request", "/dump"]:
+        # Check if the bot is in a private chat or group
+        if m.chat.type == "private":
+            # Private chat behavior
+            if bot.get_chat_member(m.chat.id, m.from_user.id).user.username is None:
+                bot.reply_to(m, "You don't have a username. Please set one in your Telegram settings.")
             else:
                 try:
-                    if m.text.split()[2] == "--crave":
+                    if len(m.text.split()) > 2 and m.text.split()[2] == "--crave":
                         status = bot.get_chat_member(m.chat.id, m.from_user.id).status
-                        if status == "administrator" or status == "creator":
+                        if status in ["administrator", "creator"]:
                             crave_dump(m)
                         else:
-                            bot.reply_to(m, f"Umm, well crave is only for admins to use")
+                            bot.reply_to(m, "The crave dump method is restricted to admins.")
+                    else:
+                        dump(m)
                 except IndexError:
-                    dump(m)
+                    bot.reply_to(m, "Please provide a valid URL for the dump.")
                 except Exception as error:
-                    bot.reply_to(m, f"Umm, well something got fucked, here's what it is: {error}")
-        else:
-            bot.reply_to(m, f"Please join this group and use me there: {request_group_link}")
+                    bot.reply_to(m, f"An error occurred: {error}")
+        elif m.chat.type in ["group", "supergroup"]:
+            # Group behavior: Check if user is an admin or has proper permissions
+            try:
+                if bot.get_chat_member(m.chat.id, m.from_user.id).status in ["administrator", "creator"]:
+                    if len(m.text.split()) > 2 and m.text.split()[2] == "--crave":
+                        crave_dump(m)
+                    else:
+                        dump(m)
+                else:
+                    bot.reply_to(m, "You need admin privileges to use this command in groups.")
+            except IndexError:
+                bot.reply_to(m, "Please provide a valid URL for the dump.")
+            except Exception as error:
+                bot.reply_to(m, f"An error occurred: {error}")
     # if m.text.split()[0] == "/vt":
     #     if m.chat.id in request_id:
     #         vndr_gen(m)
